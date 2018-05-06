@@ -131,19 +131,19 @@ const viewed = [
   }
 ];
 
-const image1 = require("./../img/image1.jpg");
-const image2 = require("./../img/image2.jpg");
-const image3 = require("./../img/image3.jpg");
-const image4 = require("./../img/image4.jpg");
-const image5 = require("./../img/image5.jpg");
-const image6 = require("./../img/image6.jpg");
-const image7 = require("./../img/image7.jpg");
-const image8 = require("./../img/image8.jpg");
-const image9 = require("./../img/image9.jpg");
-const image10 = require("./../img/image10.jpg");
-const image11 = require("./../img/image11.jpg");
-const image12 = require("./../img/image12.jpg");
-const image13 = require("./../img/image13.jpg");
+import image1 from "./../img/image1.jpg";
+import image2 from "./../img/image2.jpg";
+import image3 from "./../img/image3.jpg";
+import image4 from "./../img/image4.jpg";
+import image5 from "./../img/image5.jpg";
+import image6 from "./../img/image6.jpg";
+import image7 from "./../img/image7.jpg";
+import image8 from "./../img/image8.jpg";
+import image9 from "./../img/image9.jpg";
+import image10 from "./../img/image10.jpg";
+import image11 from "./../img/image11.jpg";
+import image12 from "./../img/image12.jpg";
+import image13 from "./../img/image13.jpg";
 
 const favs = [
   { name: "It Yourts So Good", homes: 18, image: image7 },
