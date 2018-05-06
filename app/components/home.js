@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ListView,
   Image,
+  ImageBackground,
   Text,
   View
 } from "react-native";
@@ -182,7 +183,7 @@ export default class Index extends Component {
 
   favourites(val) {
     return (
-      <Image
+      <ImageBackground
         source={val.image}
         resizeMode="stretch"
         style={{
@@ -215,7 +216,7 @@ export default class Index extends Component {
         >
           {val.homes} homes
         </Text>
-      </Image>
+      </ImageBackground>
     );
   }
   cityBox(val) {
@@ -225,7 +226,7 @@ export default class Index extends Component {
       i = 0;
     }
     return (
-      <Image
+      <ImageBackground
         source={images[i]}
         resizeMode="stretch"
         style={{
@@ -257,7 +258,7 @@ export default class Index extends Component {
         >
           {val.skill1} - {val.skill2}
         </Text>
-      </Image>
+      </ImageBackground>
     );
   }
 
@@ -269,7 +270,7 @@ export default class Index extends Component {
     }
     return (
       <View style={{ width: 340, height: 300 }}>
-        <Image
+        <ImageBackground
           source={images2[j]}
           resizeMode="stretch"
           style={{
@@ -308,7 +309,7 @@ export default class Index extends Component {
               </Text>
             </View>
           </View>
-        </Image>
+        </ImageBackground>
         <View style={styles.row}>
           <View style={{ margin: 5, justifyContent: "center" }}>
             <Text numberOfLines={1} style={{ fontSize: 14, width: 190 }}>
