@@ -1,6 +1,6 @@
 import * as types from "./actionTypes";
 
-export function login(navProps, res) {
+export const login = (navProps, res) => {
   console.log(res);
   return {
     type: types.LOGIN,
@@ -8,7 +8,8 @@ export function login(navProps, res) {
     data: res
   };
 }
-export function setNav(nav) {
+
+export const setNav = (nav) => {
   console.log(nav);
   return {
     type: types.NAV,
@@ -16,7 +17,7 @@ export function setNav(nav) {
   };
 }
 
-export function changeNav(propz) {
+export const changeNav = (propz) => {
   console.log(propz);
   return {
     type: types.CHANGE_NAV_STYLE,
@@ -24,14 +25,15 @@ export function changeNav(propz) {
   };
 }
 
-export function navToPop(propz) {
+export const navToPop = (propz) => {
   console.log(propz);
   return {
     type: types.NAV_TO_POP,
     name: propz
   };
 }
-export function navigate(id) {
+
+export const navigate = (id) => {
   return {
     type: types.NAVTO,
     props: id

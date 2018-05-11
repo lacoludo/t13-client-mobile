@@ -20,7 +20,7 @@ const initialState = {
     image:
       "https://media.licdn.com/dms/image/C4E03AQHZ5kAxawJlog/profile-displayphoto-shrink_200_200/0?e=1526684400&v=alpha&t=uHoND5Ek9KGttk6QiTY71wEpwfRqmfLWvnq7RVMNKi8"
   },
-  trips: {},
+  favorites: {},
   listings: {},
   navigator: "",
   navProps: {
@@ -30,7 +30,7 @@ const initialState = {
   }
 };
 
-export function t13(state = initialState, action = {}) {
+export const t13 = (state = initialState, action = {}) => {
   switch (action.type) {
     case types.LOGIN:
       return { ...state, userDeets: userData };

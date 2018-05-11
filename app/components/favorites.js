@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from "react";
 import EachMessage from "./inbox_widgets/eachMessage";
 import TitleBar from "./inbox_widgets/titleBar";
@@ -16,97 +10,43 @@ import {
   ScrollView,
   View
 } from "react-native";
+import image1 from "./../img/image1.jpg";
+import image2 from "./../img/image2.jpg";
+import image3 from "./../img/image3.jpg";
+import image4 from "./../img/image4.jpg";
+import image5 from "./../img/image5.jpg";
+import image6 from "./../img/image6.jpg";
 
 const past = [
   {
     id: 1,
-    image:
-      "https://pixabay.com/static/uploads/photo/2016/03/09/09/21/jetty-1245749_960_720.jpg",
-    city: "Florianópolis",
-    country: "Brazil",
-    date: {
-      from: "16.07.2016",
-      to: "30.09.2015"
-    }
+    name: "Florianópolis",
+    photo: image1,
+    skill1: "Singer",
+    skill2: "Lyricist"
   },
   {
     id: 2,
-    image:
-      "https://pixabay.com/static/uploads/photo/2016/03/09/09/22/store-1245758_960_720.jpg",
-    city: "Karangkeng",
-    country: "Indonesia",
-    date: {
-      from: "28.07.2016",
-      to: "26.01.2016"
-    }
+    name: "Karangkeng",
+    photo: image2,
+    skill1: "Singer",
+    skill2: "Lyricist"
   },
   {
     id: 3,
-    image:
-      "https://pixabay.com/static/uploads/photo/2015/12/08/00/31/pier-1081795_960_720.jpg",
-    city: "Lijia",
-    country: "China",
-    date: {
-      from: "29.07.2016",
-      to: "25.12.2015"
-    }
-  },
-  {
-    id: 4,
-    image:
-      "https://pixabay.com/static/uploads/photo/2016/03/09/09/21/jetty-1245749_960_720.jpg",
-    city: "Suvorovskaya",
-    country: "Russia",
-    date: {
-      from: "06.06.2016",
-      to: "20.06.2016"
-    }
-  },
-  {
-    id: 5,
-    image:
-      "https://pixabay.com/static/uploads/photo/2016/03/09/09/13/skateboard-1245680_960_720.jpg",
-    city: "Xinxing",
-    country: "China",
-    date: {
-      from: "08.06.2016",
-      to: "08.09.2015"
-    }
-  },
-  {
-    id: 6,
-    image:
-      "https://pixabay.com/static/uploads/photo/2016/03/09/09/30/urban-city-1245826_960_720.jpg",
-    city: "Haridimun",
-    country: "Indonesia",
-    date: {
-      from: "22.07.2016",
-      to: "13.02.2016"
-    }
-  },
-  {
-    id: 7,
-    image:
-      "https://pixabay.com/static/uploads/photo/2014/05/21/14/53/pier-349672_960_720.jpg",
-    city: "Catac",
-    country: "Peru",
-    date: {
-      from: "21.07.2016",
-      to: "09.05.2016"
-    }
+    name: "Lijia",
+    photo: image3,
+    skill1: "Singer",
+    skill2: "Lyricist"
   }
 ];
 
 const current = {
-  id: 7,
-  image:
-    "https://pixabay.com/static/uploads/photo/2014/05/21/14/53/pier-349672_960_720.jpg",
-  city: "Catac",
-  country: "Peru",
-  date: {
-    from: "21.07.2016",
-    to: "09.05.2016"
-  }
+  id: 1,
+  name: "TeeJay",
+  photo: image1,
+  skill1: "Singer",
+  skill2: "Lyricist"
 };
 
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
@@ -128,10 +68,8 @@ export default class Inbox extends Component {
   renderThis(val) {
     return (
       <Image
-        source={{ uri: val.image }}
+        source={val.photo}
         style={{
-          width: 350,
-          height: 250,
           margin: 5,
           justifyContent: "center",
           alignItems: "center",
@@ -147,7 +85,7 @@ export default class Inbox extends Component {
             fontSize: 24
           }}
         >
-          {val.city}, {val.country}
+          {val.name}
         </Text>
         <Text
           style={{
@@ -157,7 +95,7 @@ export default class Inbox extends Component {
             fontSize: 14
           }}
         >
-          {val.date.from} - {val.date.to}
+          {val.skill1} - {val.skill2}
         </Text>
       </Image>
     );
@@ -166,7 +104,7 @@ export default class Inbox extends Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <TitleBar name="Trips" sub="Almost time to pack your bags" />
+        <TitleBar name="Favorites" sub="Don't miss out on updates" />
         <View
           style={{
             borderBottomWidth: 1,
@@ -183,7 +121,7 @@ export default class Inbox extends Component {
               fontWeight: "300"
             }}
           >
-            Current Trip
+            Recent updates
           </Text>
           {this.renderThis(current)}
         </View>
@@ -196,7 +134,7 @@ export default class Inbox extends Component {
             fontWeight: "300"
           }}
         >
-          Past Trips
+          All your favorites
         </Text>
         <ListView
           dataSource={this.state.dataSource}

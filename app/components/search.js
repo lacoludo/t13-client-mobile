@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from "react";
 import SearchRow from "./search_widgets/searchRow";
 import TitleBar from "./inbox_widgets/titleBar";
