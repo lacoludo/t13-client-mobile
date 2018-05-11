@@ -1,15 +1,8 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from "react";
 import EachMessage from "./inbox_widgets/eachMessage";
 import TitleBar from "./inbox_widgets/titleBar";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import InvertibleScrollView from "react-native-invertible-scroll-view";
-const { width, height } = Dimensions.get("window");
 import {
   AppRegistry,
   StyleSheet,
@@ -21,10 +14,19 @@ import {
   View
 } from "react-native";
 
+const { width, height } = Dimensions.get("window");
+
 let count;
+
 const convo = [
-  { note: "Are you a robot though dude?", person: 2 },
-  { person: 1, note: "Working on it man" },
+  {
+    note: "Are you a robot though dude?",
+    person: 2
+  },
+  {
+    person: 1,
+    note: "Working on it man"
+  },
   {
     note: "Yeah Whatever fam. Call me when you start taking life seriously",
     person: 2
@@ -111,7 +113,7 @@ export default class Inbox extends Component {
           <Image
             source={{
               uri:
-                "https://scontent-dft4-1.xx.fbcdn.net/v/t1.0-9/13434970_10209841206091706_4316142461215331993_n.jpg?oh=6dcd8a17df9c06adfaab46ac1e108d52&oe=58271748"
+                "https://media.licdn.com/dms/image/C4E03AQHZ5kAxawJlog/profile-displayphoto-shrink_200_200/0?e=1526684400&v=alpha&t=uHoND5Ek9KGttk6QiTY71wEpwfRqmfLWvnq7RVMNKi8"
             }}
             resizeMode="contain"
             style={{
@@ -140,7 +142,7 @@ export default class Inbox extends Component {
 
   similator() {
     convo.reverse();
-    convo.push({ person: 2, note: "Hello, you are beautiful." });
+    convo.push({ person: 2, note: "Ahahah, I believed you." });
     this.setState({
       datasource: ds.cloneWithRows(convo.reverse())
     });

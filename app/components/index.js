@@ -9,13 +9,13 @@ import Drawer from "react-native-drawer";
 import ControlPanel from "./controlPanel";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
+import Search from "./search";
 import Home from "./home";
-import Convo from "./each_convo";
 import Inbox from "./inbox";
+import Convo from "./each_convo";
+import Favorites from "./favorites";
 import Profile from "./profile";
 import Settings from "./settings";
-import Search from "./search";
-import Trips from "./trips";
 
 const drawerRef = {
   close: () => console.log("close"),
@@ -44,22 +44,20 @@ class Root extends Component {
   renderScene(route, navigator) {
     const { state, actions } = this.props;
     const routeId = route.id;
-
-    if (routeId === "home") {
+    if (routeId === "search") {
       return (
-        <Home
+        <Search
           {...this.props}
-          userData={route.userData}
           close={() => this.closeControlPanel()}
           navigator={navigator}
         />
       );
     }
-    if (routeId === "profile") {
+    if (routeId === "home") {
       return (
-        <Profile
+        <Home
           {...this.props}
-          data={route.data}
+          userData={route.userData}
           close={() => this.closeControlPanel()}
           navigator={navigator}
         />
@@ -85,27 +83,28 @@ class Root extends Component {
         />
       );
     }
+    if (routeId === "favorites") {
+      return (
+        <Favorites
+          {...this.props}
+          close={() => this.closeControlPanel()}
+          navigator={navigator}
+        />
+      );
+    }
+    if (routeId === "profile") {
+      return (
+        <Profile
+          {...this.props}
+          data={route.data}
+          close={() => this.closeControlPanel()}
+          navigator={navigator}
+        />
+      );
+    }
     if (routeId === "settings") {
       return (
         <Settings
-          {...this.props}
-          close={() => this.closeControlPanel()}
-          navigator={navigator}
-        />
-      );
-    }
-    if (routeId === "trips") {
-      return (
-        <Trips
-          {...this.props}
-          close={() => this.closeControlPanel()}
-          navigator={navigator}
-        />
-      );
-    }
-    if (routeId === "search") {
-      return (
-        <Search
           {...this.props}
           close={() => this.closeControlPanel()}
           navigator={navigator}

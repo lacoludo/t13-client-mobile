@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from "react";
 import EachMessage from "./inbox_widgets/eachMessage";
 import TitleBar from "./inbox_widgets/titleBar";
@@ -288,6 +282,7 @@ inboxData = [
       "Nulla mollis molestie lorem. Quisque ut erat. Curabitur gravida nisi at nibh."
   }
 ];
+
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
 export default class Inbox extends Component {

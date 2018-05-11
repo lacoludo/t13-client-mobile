@@ -13,24 +13,67 @@ import {
 } from "react-native";
 import Nav from "./global_widgets/nav";
 import Icon from "react-native-vector-icons/MaterialIcons";
-const i = -1;
-const j = -1;
+import logoWhite from "./../img/logoWhite.png";
+import image1 from "./../img/image1.jpg";
+import image2 from "./../img/image2.jpg";
+import image3 from "./../img/image3.jpg";
+import image4 from "./../img/image4.jpg";
+import image5 from "./../img/image5.jpg";
+import image6 from "./../img/image6.jpg";
 
-const artists = [
+const profiles = [
   {
     id: 1,
-    name: "Três Pontas",
-    skill1: "9/21/2015",
-    skill2: "1/3/2016"
-  },
-  { id: 2, name: "Dongxi", skill1: "10/30/2015", skill2: "2/28/2016" },
-  { id: 3, name: "Gaoqiao", skill1: "4/28/2016", skill2: "9/10/2016" },
-  { id: 4, name: "Redon", skill1: "10/11/2015", skill2: "7/27/2016" },
-  {
-    id: 5,
     name: "TeeJay",
+    photo: image1,
+    skill1: "Singer",
+    skill2: "Lyricist"
+  },
+  {
+    id: 2,
+    name: "MC Sai",
+    photo: image2,
+    skill1: "Rapper",
+    skill2: "Lyricist"
+  },
+  {
+    id: 3,
+    name: "SriMathumitha",
+    photo: image3,
+    skill1: "Singer",
+    skill2: "Lyricist"
+  },
+  {
+    id: 4,
+    name: "Gaji",
+    photo: image4,
+    skill1: "Music producer",
+    skill2: "Mix and mastering engineer"
+  },
+  {
+    id: 1,
+    name: "Pragathi Guruprasad",
+    photo: image3,
     skill1: "Singer",
     skill2: "Songwriter"
+  },
+  {
+    id: 2,
+    name: "Kausi",
+    skill1: "Beatmaker",
+    skill2: "Audio engineer"
+  },
+  {
+    id: 3,
+    name: "Nerujan Sehasothy",
+    skill1: "Singer",
+    skill2: "Violinist"
+  },
+  {
+    id: 4,
+    name: "Redon",
+    skill1: "10/11/2015",
+    skill2: "7/27/2016"
   },
   {
     id: 6,
@@ -38,7 +81,12 @@ const artists = [
     skill1: "Rapper",
     skill2: "Beatmaker"
   },
-  { id: 7, name: "Dagou", skill1: "7/17/2016", skill2: "9/24/2016" },
+  {
+    id: 7,
+    name: "Dagou",
+    skill1: "7/17/2016",
+    skill2: "9/24/2016"
+  },
   {
     id: 8,
     name: "San Rafael",
@@ -58,108 +106,6 @@ const artists = [
     skill2: "3/1/2016"
   }
 ];
-const viewed = [
-  {
-    id: 1,
-    ava: "https://robohash.org/rerumvelitaliquam.jpg?size=50x50&set=set1",
-    price: "$22.17",
-    name: "dui vel sem sed",
-    reviews: 52
-  },
-  {
-    id: 2,
-    ava: "https://robohash.org/aspernaturesterror.jpg?size=50x50&set=set1",
-    price: "$39.55",
-    name: "nec sem duis aliquam",
-    reviews: 78
-  },
-  {
-    id: 3,
-    ava: "https://robohash.org/nulladoloremest.png?size=50x50&set=set1",
-    price: "$39.84",
-    name: "accumsan tellus nisi",
-    reviews: 89
-  },
-  {
-    id: 4,
-    ava: "https://robohash.org/utdoloribusasperiores.bmp?size=50x50&set=set1",
-    price: "$30.73",
-    name: "porttitor pede justo eu",
-    reviews: 47
-  },
-  {
-    id: 5,
-    ava: "https://robohash.org/odioautsaepe.bmp?size=50x50&set=set1",
-    price: "$22.70",
-    name: "fermentum donec ut mauris",
-    reviews: 53
-  },
-  {
-    id: 6,
-    ava: "https://robohash.org/ullamdoloredolor.jpg?size=50x50&set=set1",
-    price: "$25.42",
-    name: "mauris eget massa tempor",
-    reviews: 75
-  },
-  {
-    id: 7,
-    ava: "https://robohash.org/eaquenostrumofficiis.jpg?size=50x50&set=set1",
-    price: "$23.02",
-    name: "augue vestibulum ante",
-    reviews: 55
-  },
-  {
-    id: 8,
-    ava: "https://robohash.org/esseomnisdolore.png?size=50x50&set=set1",
-    price: "$12.46",
-    name: "lacus curabitur at",
-    reviews: 74
-  },
-  {
-    id: 9,
-    ava: "https://robohash.org/temporibusenimquisquam.bmp?size=50x50&set=set1",
-    price: "$18.26",
-    name: "in sagittis dui",
-    reviews: 29
-  },
-  {
-    id: 10,
-    ava: "https://robohash.org/delectussolutaut.bmp?size=50x50&set=set1",
-    price: "$29.68",
-    name: "luctus ultricies eu",
-    reviews: 92
-  }
-];
-
-import image1 from "./../img/image1.jpg";
-import image2 from "./../img/image2.jpg";
-import image3 from "./../img/image3.jpg";
-import image4 from "./../img/image4.jpg";
-import image5 from "./../img/image5.jpg";
-import image6 from "./../img/image6.jpg";
-import image7 from "./../img/image7.jpg";
-import image8 from "./../img/image8.jpg";
-import image9 from "./../img/image9.jpg";
-import image10 from "./../img/image10.jpg";
-import image11 from "./../img/image11.jpg";
-import image12 from "./../img/image12.jpg";
-import image13 from "./../img/image13.jpg";
-
-const favs = [
-  { name: "It Yourts So Good", homes: 18, image: image7 },
-  { name: "Underground Homes", homes: 4, image: image8 },
-  { name: "Geodesic Domes", homes: 5, image: image9 },
-  { name: "Smells Like Eames Spirit", homes: 22, image: image10 },
-  { name: "Best of Bali", homes: 18, image: image11 },
-  { name: "Family Fun around the World", homes: 26, image: image12 },
-  { name: "Castles", homes: 26, image: image13 },
-  { name: "Around The World in 15 Listings", homes: 15, image: image4 },
-  { name: "Milano Design", homes: 20, image: image8 },
-  { name: "Oui, Oui Paris", homes: 25, image: image6 }
-];
-
-const images = [image1, image2, image3, image4, image5, image6];
-const images2 = [image7, image8, image9, image10, image11, image12, image13];
 
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
@@ -169,9 +115,9 @@ export default class Index extends Component {
     console.log(props);
 
     this.state = {
-      datasource: ds.cloneWithRows(artists),
-      dataviewed: ds.cloneWithRows(viewed),
-      datafav: ds.cloneWithRows(favs)
+      dataRecentSearches: ds.cloneWithRows(profiles),
+      dataRecentlyViewed: ds.cloneWithRows(profiles),
+      dataYourFavorites: ds.cloneWithRows(profiles)
     };
   }
   componentDidMount() {
@@ -181,53 +127,10 @@ export default class Index extends Component {
     this.props.close();
   }
 
-  favourites(val) {
+  recentSearches(val) {
     return (
       <ImageBackground
-        source={val.image}
-        resizeMode="stretch"
-        style={{
-          width: 330,
-          height: 220,
-          margin: 5,
-          marginBottom: 30,
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
-        <Text
-          style={{
-            backgroundColor: "rgba(0,0,0,0)",
-            textAlign: "center",
-            color: "#fff",
-            fontSize: 25,
-            fontWeight: "700"
-          }}
-        >
-          {val.name}
-        </Text>
-        <Text
-          style={{
-            backgroundColor: "rgba(0,0,0,0)",
-            color: "#fff",
-            fontSize: 13,
-            fontWeight: "600"
-          }}
-        >
-          {val.homes} homes
-        </Text>
-      </ImageBackground>
-    );
-  }
-  cityBox(val) {
-    if (i < 5) {
-      i++;
-    } else {
-      i = 0;
-    }
-    return (
-      <ImageBackground
-        source={images[i]}
+        source={val.photo}
         resizeMode="stretch"
         style={{
           width: 330,
@@ -262,70 +165,79 @@ export default class Index extends Component {
     );
   }
 
-  viewed(val) {
-    if (j < 5) {
-      j++;
-    } else {
-      j = 0;
-    }
+  recentlyViewed(val) {
     return (
-      <View style={{ width: 340, height: 300 }}>
-        <ImageBackground
-          source={images2[j]}
-          resizeMode="stretch"
+      <ImageBackground
+        source={val.photo}
+        resizeMode="stretch"
+        style={{
+          width: 330,
+          height: 220,
+          margin: 5,
+          marginBottom: 30,
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+        <Text
           style={{
-            width: 330,
-            height: 220,
-            margin: 5,
-            justifyContent: "space-between"
+            backgroundColor: "rgba(0,0,0,0)",
+            color: "#fff",
+            fontSize: 30,
+            fontWeight: "700"
           }}
         >
-          <View style={styles.row}>
-            <View />
-            <Icon
-              name="favorite-border"
-              size={25}
-              style={{ backgroundColor: "rgba(0,0,0,0)", margin: 10 }}
-              color="#fff"
-            />
-          </View>
-          <View style={styles.row}>
-            <View
-              style={{
-                backgroundColor: "rgba(0,0,0,0.6)",
-                marginBottom: 10,
-                paddingLeft: 10
-              }}
-            >
-              <Text
-                style={{
-                  color: "#fff",
-                  margin: 10,
-                  fontSize: 16,
-                  fontWeight: "500"
-                }}
-              >
-                {val.price}
-              </Text>
-            </View>
-          </View>
-        </ImageBackground>
-        <View style={styles.row}>
-          <View style={{ margin: 5, justifyContent: "center" }}>
-            <Text numberOfLines={1} style={{ fontSize: 14, width: 190 }}>
-              {val.name}
-            </Text>
-            <Text style={{ fontWeight: "300", fontSize: 13 }}>
-              Private Room
-            </Text>
-          </View>
-          <Image
-            source={{ uri: val.ava }}
-            resizeMode="contain"
-            style={{ width: 40, height: 40, margin: 10, alignSelf: "center" }}
-          />
-        </View>
-      </View>
+          {val.name}
+        </Text>
+        <Text
+          style={{
+            backgroundColor: "rgba(0,0,0,0)",
+            color: "#fff",
+            fontSize: 14,
+            fontWeight: "600"
+          }}
+        >
+          {val.skill1} - {val.skill2}
+        </Text>
+      </ImageBackground>
+    );
+  }
+
+  yourFavorites(val) {
+    return (
+      <ImageBackground
+        source={val.photo}
+        resizeMode="stretch"
+        style={{
+          width: 330,
+          height: 220,
+          margin: 5,
+          marginBottom: 30,
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+        <Text
+          style={{
+            backgroundColor: "rgba(0,0,0,0)",
+            color: "#fff",
+            fontSize: 30,
+            fontWeight: "700"
+          }}
+        >
+          {val.name}
+        </Text>
+        <Text
+          style={{
+            backgroundColor: "rgba(0,0,0,0)",
+            color: "#fff",
+            fontSize: 14,
+            fontWeight: "600"
+          }}
+        >
+          {val.skill1} - {val.skill2}
+        </Text>
+      </ImageBackground>
     );
   }
 
@@ -335,7 +247,7 @@ export default class Index extends Component {
         <ScrollView style={{ flex: 1 }}>
           <View style={styles.container}>
             <Image
-              source={require("./../img/logoWhite.png")}
+              source={logoWhite}
               resizeMode="contain"
               style={{ width: 40, height: 40, marginLeft: 20, marginTop: 15 }}
             />
@@ -368,24 +280,24 @@ export default class Index extends Component {
           <View style={styles.container2}>
             <Text style={styles.title}>Recent searches</Text>
             <ListView
-              dataSource={this.state.datasource}
-              renderRow={rowData => this.cityBox(rowData)}
+              dataSource={this.state.dataRecentSearches}
+              renderRow={rowData => this.recentSearches(rowData)}
               horizontal={true}
             />
           </View>
           <View style={styles.container2}>
             <Text style={styles.title}>Recently viewed</Text>
             <ListView
-              dataSource={this.state.dataviewed}
-              renderRow={rowData => this.viewed(rowData)}
+              dataSource={this.state.dataRecentlyViewed}
+              renderRow={rowData => this.recentlyViewed(rowData)}
               horizontal={true}
             />
           </View>
           <View style={styles.container2}>
-            <Text style={styles.title}>Your favourites</Text>
+            <Text style={styles.title}>Your favorites</Text>
             <ListView
-              dataSource={this.state.datafav}
-              renderRow={rowData => this.favourites(rowData)}
+              dataSource={this.state.dataYourFavorites}
+              renderRow={rowData => this.yourFavorites(rowData)}
               horizontal={true}
             />
           </View>
