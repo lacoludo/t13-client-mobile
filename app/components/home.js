@@ -12,6 +12,7 @@ import {
   View,
   TouchableHighlight
 } from "react-native";
+import * as firebase from "firebase";
 import Nav from "./global_widgets/nav";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import logoWhite from "./../img/logoWhite.png";
@@ -21,6 +22,17 @@ import image3 from "./../img/image3.jpg";
 import image4 from "./../img/image4.jpg";
 import image5 from "./../img/image5.jpg";
 import image6 from "./../img/image6.jpg";
+
+const config = {
+  apiKey: "AIzaSyBKQMJwcNRlodeEYP_lCMUQY91Q-ER7Vp0",
+  authDomain: "t13-database.firebaseapp.com",
+  databaseURL: "https://t13-database.firebaseio.com",
+  projectId: "t13-database",
+  storageBucket: "t13-database.appspot.com",
+  messagingSenderId: "634747026122"
+};
+
+const firebaseApp = firebase.initializeApp(config);
 
 const profiles = [
   {
@@ -118,14 +130,19 @@ export default class Index extends Component {
       dataRecentlyViewed: ds.cloneWithRows(profiles),
       dataYourFavorites: ds.cloneWithRows(profiles)
     };
+    this.itemsRef = this.getRef().child("profiles");
+  }
+
+  getRef() {
+    return firebaseApp.database().ref();
   }
 
   componentWillMount() {
-    this.getItems();
+    this.getItems(this.itemsRef);
   }
 
   componentDidMount() {
-    this.getItems();
+    this.getItems(this.itemsRef);
   }
 
   componentDidMount() {
@@ -249,31 +266,47 @@ export default class Index extends Component {
     );
   }
 
-  getItems() {
-    let items = [
-      {
-        title: "Item one"
-      },
-      {
-        title: "Item two"
-      }
-    ];
-    this.setState({
-      itemDataSource: this.state.itemDataSource.cloneWithRows(items)
+  getItems(itemsRef) {
+    // let items = [
+    //   {
+    //     title: "Item one"
+    //   },
+    //   {
+    //     title: "Item two"
+    //   }
+    // ];
+    itemsRef.on("value", snap => {
+      let items = [];
+      snap.forEach(child => {
+        items.push({
+          title: child.val().name,
+          photo: child.val().photo,
+          _key: child.key
+        });
+      });
+      this.setState({
+        itemDataSource: this.state.itemDataSource.cloneWithRows(items)
+      });
     });
   }
-  
+
   pressRow(item) {
     console.log(item);
   }
 
   renderRow(item) {
     return (
-      <TouchableHighlight onPress={() => {
-        this.pressRow();
-      }}>
+      <TouchableHighlight
+        onPress={() => {
+          this.pressRow();
+        }}
+      >
         <View>
           <Text>{item.title}</Text>
+          <Image
+            style={{ width: 50, height: 50 }}
+            source={{ uri: item.photo }}
+          />
         </View>
       </TouchableHighlight>
     );

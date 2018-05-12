@@ -1,4 +1,3 @@
-import * as firebase from "firebase";
 
 // firebaseApp.database().ref().on("value", (snap) => {console.log(snap.val())})
 
@@ -14,17 +13,6 @@ import Components from "../components";
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const reducer = combineReducers(reducers);
 const store = createStoreWithMiddleware(reducer);
-
-const config = {
-  apiKey: "AIzaSyBKQMJwcNRlodeEYP_lCMUQY91Q-ER7Vp0",
-  authDomain: "t13-database.firebaseapp.com",
-  databaseURL: "https://t13-database.firebaseio.com",
-  projectId: "t13-database",
-  storageBucket: "t13-database.appspot.com",
-  messagingSenderId: "634747026122"
-};
-
-const firebaseApp = firebase.initializeApp(config);
 
 export default class Index extends Component {
   navigationView() {
