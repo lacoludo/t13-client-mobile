@@ -9,7 +9,8 @@ import {
   Image,
   ImageBackground,
   Text,
-  View
+  View,
+  TouchableHighlight
 } from "react-native";
 import Nav from "./global_widgets/nav";
 import Icon from "react-native-vector-icons/MaterialIcons";
@@ -107,19 +108,26 @@ const profiles = [
   }
 ];
 
-const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-
 export default class Index extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
-
+  constructor() {
+    super();
+    let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.state = {
+      itemDataSource: ds,
       dataRecentSearches: ds.cloneWithRows(profiles),
       dataRecentlyViewed: ds.cloneWithRows(profiles),
       dataYourFavorites: ds.cloneWithRows(profiles)
     };
   }
+
+  componentWillMount() {
+    this.getItems();
+  }
+
+  componentDidMount() {
+    this.getItems();
+  }
+
   componentDidMount() {
     this.props.actions.changeNav("dark");
     this.props.actions.setNav(this.props.navigator);
@@ -241,6 +249,36 @@ export default class Index extends Component {
     );
   }
 
+  getItems() {
+    let items = [
+      {
+        title: "Item one"
+      },
+      {
+        title: "Item two"
+      }
+    ];
+    this.setState({
+      itemDataSource: this.state.itemDataSource.cloneWithRows(items)
+    });
+  }
+  
+  pressRow(item) {
+    console.log(item);
+  }
+
+  renderRow(item) {
+    return (
+      <TouchableHighlight onPress={() => {
+        this.pressRow();
+      }}>
+        <View>
+          <Text>{item.title}</Text>
+        </View>
+      </TouchableHighlight>
+    );
+  }
+
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -279,6 +317,10 @@ export default class Index extends Component {
           </View>
           <View style={styles.container2}>
             <Text style={styles.title}>Recent searches</Text>
+            <ListView
+              dataSource={this.state.itemDataSource}
+              renderRow={this.renderRow}
+            />
             <ListView
               dataSource={this.state.dataRecentSearches}
               renderRow={rowData => this.recentSearches(rowData)}
