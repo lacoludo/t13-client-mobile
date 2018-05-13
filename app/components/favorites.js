@@ -54,7 +54,6 @@ const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 export default class Inbox extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
     this.props.actions.changeNav("light");
 
     this.state = {

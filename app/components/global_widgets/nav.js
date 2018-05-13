@@ -5,7 +5,6 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 export default class Nav extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
   }
 
   menu() {

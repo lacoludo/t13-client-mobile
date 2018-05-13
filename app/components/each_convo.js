@@ -39,7 +39,6 @@ export default class Inbox extends Component {
   constructor(props) {
     super(props);
     count = 1;
-    console.log(this.props);
     this.props.actions.changeNav("light");
     this.state = {
       datasource: ds.cloneWithRows(convo.reverse()),

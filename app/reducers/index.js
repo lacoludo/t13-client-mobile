@@ -1,5 +1,3 @@
-import * as types from "../actions/actionTypes";
-import * as actions from "../actions/actions";
 import React, {
   Component,
   ScrollView,
@@ -8,6 +6,15 @@ import React, {
   Image,
   Dimensions
 } from "react-native";
+import { combineReducers } from "redux";
+import {
+  LOGIN,
+  NAV,
+  CHANGE_NAV_STYLE,
+  NAV_TO_POP,
+  NAVTO
+} from "../actions/actions";
+
 let userData;
 
 const initialState = {
@@ -30,52 +37,58 @@ const initialState = {
   }
 };
 
-export const t13 = (state = initialState, action = {}) => {
+// const navigation = (state = initialState, action) => {
+export const t13 = (state = initialState, action) => {
   switch (action.type) {
-    case types.LOGIN:
-      return { ...state, userDeets: userData };
-
-    case types.NAV:
+    case LOGIN:
+      return {
+        ...state,
+        userDeets: userData
+      };
+    case NAV:
       return {
         ...state,
         navigator: action.navigator
       };
-
-    case types.NAVTO:
-      console.log("Moving nave to " + action.props);
+    case NAVTO:
       state.navigator.replace({
         id: action.props,
         name: action.props
       });
-
       return {
         ...state,
         openMenu: false
       };
-
-    case types.NAV_TO_POP:
+    case NAV_TO_POP:
       return {
         ...state,
-        navProps: { name: action.name, type: "pop", icon: "arrow-back" }
+        navProps: {
+          name: action.name,
+          type: "pop",
+          icon: "arrow-back"
+        }
       };
-
-    case types.CHANGE_NAV_STYLE:
-      console.log(action.prop);
-
-      if (action.prop == "light") {
+    case CHANGE_NAV_STYLE:
+      if (action.prop === "light") {
         return {
           ...state,
-          navStyle: { backgroundColor: "#fff", color: "#444" },
+          navStyle: {
+            backgroundColor: "#fff",
+            color: "#444"
+          },
           navProps: {
             name: "",
             type: "menu",
             icon: "menu"
           }
         };
-      } else if (action.prop == "dark") {
+      } else if (action.prop === "dark") {
         return {
           ...state,
-          navStyle: { backgroundColor: "#000", color: "#fff" },
+          navStyle: {
+            backgroundColor: "#000",
+            color: "#fff"
+          },
           navProps: {
             name: "",
             type: "menu",
@@ -83,8 +96,13 @@ export const t13 = (state = initialState, action = {}) => {
           }
         };
       }
-
     default:
       return state;
   }
-}
+};
+
+// const t13 = combineReducers({
+//   navigation
+// });
+
+// export default t13;
