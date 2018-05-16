@@ -5,13 +5,12 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 export default class Nav extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
   }
 
   menu() {
-    if (this.props.state.navProps.type == "menu") {
+    if (this.props.state.navProps.type === "menu") {
       this.props.onPress();
-    } else if (this.props.state.navProps.type == "pop") {
+    } else if (this.props.state.navProps.type === "pop") {
       this.props.state.navigator.replace({ id: "inbox" });
     }
   }

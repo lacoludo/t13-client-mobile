@@ -9,51 +9,53 @@ import {
   Image,
   ImageBackground,
   Text,
-  View
+  View,
+  TouchableHighlight
 } from "react-native";
+import firebaseApp from "./firebaseApp";
 import Nav from "./global_widgets/nav";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import logoWhite from "./../img/logoWhite.png";
-import image1 from "./../img/image1.jpg";
-import image2 from "./../img/image2.jpg";
-import image3 from "./../img/image3.jpg";
-import image4 from "./../img/image4.jpg";
-import image5 from "./../img/image5.jpg";
-import image6 from "./../img/image6.jpg";
+// import logoWhite from "./../img/logoWhite.png";
+// import image1 from "./../img/image1.jpg";
+// import image2 from "./../img/image2.jpg";
+// import image3 from "./../img/image3.jpg";
+// import image4 from "./../img/image4.jpg";
+// import image5 from "./../img/image5.jpg";
+// import image6 from "./../img/image6.jpg";
 
 const profiles = [
   {
     id: 1,
     name: "TeeJay",
-    photo: image1,
+    photo: "https://facebook.github.io/react-native/docs/assets/favicon.png",
     skill1: "Singer",
     skill2: "Lyricist"
   },
   {
     id: 2,
     name: "MC Sai",
-    photo: image2,
+    photo: "https://facebook.github.io/react-native/docs/assets/favicon.png",
     skill1: "Rapper",
     skill2: "Lyricist"
   },
   {
     id: 3,
     name: "SriMathumitha",
-    photo: image3,
+    photo: "https://facebook.github.io/react-native/docs/assets/favicon.png",
     skill1: "Singer",
     skill2: "Lyricist"
   },
   {
     id: 4,
     name: "Gaji",
-    photo: image4,
+    photo: "https://facebook.github.io/react-native/docs/assets/favicon.png",
     skill1: "Music producer",
     skill2: "Mix and mastering engineer"
   },
   {
     id: 1,
     name: "Pragathi Guruprasad",
-    photo: image3,
+    photo: "https://facebook.github.io/react-native/docs/assets/favicon.png",
     skill1: "Singer",
     skill2: "Songwriter"
   },
@@ -107,19 +109,31 @@ const profiles = [
   }
 ];
 
-const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-
 export default class Index extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
-
+  constructor() {
+    super();
+    let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.state = {
+      itemDataSource: ds,
       dataRecentSearches: ds.cloneWithRows(profiles),
       dataRecentlyViewed: ds.cloneWithRows(profiles),
       dataYourFavorites: ds.cloneWithRows(profiles)
     };
+    this.itemsRef = this.getRef().child("profiles");
   }
+
+  getRef() {
+    return firebaseApp.database().ref();
+  }
+
+  componentWillMount() {
+    this.getItems(this.itemsRef);
+  }
+
+  componentDidMount() {
+    this.getItems(this.itemsRef);
+  }
+
   componentDidMount() {
     this.props.actions.changeNav("dark");
     this.props.actions.setNav(this.props.navigator);
@@ -130,7 +144,7 @@ export default class Index extends Component {
   recentSearches(val) {
     return (
       <ImageBackground
-        source={val.photo}
+        source={{ uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png' }}
         resizeMode="stretch"
         style={{
           width: 330,
@@ -168,7 +182,7 @@ export default class Index extends Component {
   recentlyViewed(val) {
     return (
       <ImageBackground
-        source={val.photo}
+        source={{ uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png' }}
         resizeMode="stretch"
         style={{
           width: 330,
@@ -206,7 +220,7 @@ export default class Index extends Component {
   yourFavorites(val) {
     return (
       <ImageBackground
-        source={val.photo}
+        source={{ uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png' }}
         resizeMode="stretch"
         style={{
           width: 330,
@@ -241,13 +255,52 @@ export default class Index extends Component {
     );
   }
 
+  getItems(itemsRef) {
+    itemsRef.on("value", snap => {
+      let items = [];
+      snap.forEach(child => {
+        items.push({
+          title: child.val().name,
+          photo: child.val().photo,
+          _key: child.key
+        });
+      });
+      this.setState({
+        itemDataSource: this.state.itemDataSource.cloneWithRows(items)
+      });
+    });
+  }
+
+  pressRow(item) {
+    console.log(item);
+  }
+
+  renderRow(item) {
+    return (
+      <TouchableHighlight
+        onPress={() => {
+          this.pressRow();
+        }}
+      >
+        <View>
+          <Text>{item.title}</Text>
+          <Image
+            style={{ width: 50, height: 50 }}
+            source={{ uri: item.photo }}
+          />
+        </View>
+      </TouchableHighlight>
+    );
+  }
+
   render() {
     return (
       <View style={{ flex: 1 }}>
         <ScrollView style={{ flex: 1 }}>
           <View style={styles.container}>
             <Image
-              source={logoWhite}
+              style={{ width: 50, height: 50 }}
+              source={{ uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png' }}
               resizeMode="contain"
               style={{ width: 40, height: 40, marginLeft: 20, marginTop: 15 }}
             />
@@ -279,6 +332,10 @@ export default class Index extends Component {
           </View>
           <View style={styles.container2}>
             <Text style={styles.title}>Recent searches</Text>
+            <ListView
+              dataSource={this.state.itemDataSource}
+              renderRow={this.renderRow}
+            />
             <ListView
               dataSource={this.state.dataRecentSearches}
               renderRow={rowData => this.recentSearches(rowData)}

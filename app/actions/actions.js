@@ -1,41 +1,41 @@
-import * as types from "./actionTypes";
+export const LOGIN = "LOGIN";
+export const NAV = "NAV";
+export const CHANGE_NAV_STYLE = "CHANGE_NAV_STYLE";
+export const NAV_TO_POP = "NAV_TO_POP";
+export const NAVTO = "NAVTO";
 
 export const login = (navProps, res) => {
-  console.log(res);
   return {
-    type: types.LOGIN,
+    type: LOGIN,
     nav: navProps,
     data: res
   };
 }
 
 export const setNav = (nav) => {
-  console.log(nav);
   return {
-    type: types.NAV,
+    type: NAV,
     navigator: nav
   };
 }
 
-export const changeNav = (propz) => {
-  console.log(propz);
+export const changeNav = (props) => {
   return {
-    type: types.CHANGE_NAV_STYLE,
-    prop: propz
+    type: CHANGE_NAV_STYLE,
+    prop: props
   };
 }
 
-export const navToPop = (propz) => {
-  console.log(propz);
+export const navToPop = (props) => {
   return {
-    type: types.NAV_TO_POP,
-    name: propz
+    type: NAV_TO_POP,
+    name: props
   };
 }
 
 export const navigate = (id) => {
   return {
-    type: types.NAVTO,
+    type: NAVTO,
     props: id
   };
 }

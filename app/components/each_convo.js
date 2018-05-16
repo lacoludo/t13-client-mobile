@@ -39,7 +39,6 @@ export default class Inbox extends Component {
   constructor(props) {
     super(props);
     count = 1;
-    console.log(this.props);
     this.props.actions.changeNav("light");
     this.state = {
       datasource: ds.cloneWithRows(convo.reverse()),
@@ -55,7 +54,7 @@ export default class Inbox extends Component {
   eachMessage(x) {
     count++;
 
-    if (x.person == 2) {
+    if (x.person === 2) {
       return (
         <View
           style={{ flexDirection: "row", alignItems: "flex-end", margin: 5 }}
