@@ -10,10 +10,11 @@ const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const reducer = combineReducers(reducers);
 const store = createStoreWithMiddleware(reducer);
 
-export default class Index extends Component {
+export default class Root extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
+        <Text>coucou ludo : </Text>
         <Provider store={store}>
           <Components />
         </Provider>

@@ -54,7 +54,7 @@ export default class Inbox extends Component {
   eachMessage(x) {
     count++;
 
-    if (x.person == 2) {
+    if (x.person === 2) {
       return (
         <View
           style={{ flexDirection: "row", alignItems: "flex-end", margin: 5 }}

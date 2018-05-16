@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { View } from "react-native";
-import { Navigator } from "react-native-deprecated-custom-components";
 import { bindActionCreators } from "redux";
-import * as actions from "../actions/actions";
 import { connect } from "react-redux";
-import Nav from "./global_widgets/nav";
-import Drawer from "react-native-drawer";
-import ControlPanel from "./controlPanel";
 import Icon from "react-native-vector-icons/MaterialIcons";
-
+import Drawer from "react-native-drawer";
+import { Navigator } from "react-native-deprecated-custom-components";
+import * as actions from "./../actions/actions";
+import Nav from "./global_widgets/nav";
+import ControlPanel from "./controlPanel";
 import Search from "./search";
 import Home from "./home";
 import Inbox from "./inbox";

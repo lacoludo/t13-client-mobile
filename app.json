@@ -1,4 +1,5 @@
 {
-  "name": "T13",
-  "displayName": "T13"
+  "expo": {
+    "sdkVersion": "27.0.0"
+  }
 }

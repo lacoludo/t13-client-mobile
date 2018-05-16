@@ -10,32 +10,32 @@ import {
   ScrollView,
   View
 } from "react-native";
-import image1 from "./../img/image1.jpg";
-import image2 from "./../img/image2.jpg";
-import image3 from "./../img/image3.jpg";
-import image4 from "./../img/image4.jpg";
-import image5 from "./../img/image5.jpg";
-import image6 from "./../img/image6.jpg";
+// import image1 from "./../img/image1.jpg";
+// import image2 from "./../img/image2.jpg";
+// import image3 from "./../img/image3.jpg";
+// import image4 from "./../img/image4.jpg";
+// import image5 from "./../img/image5.jpg";
+// import image6 from "./../img/image6.jpg";
 
 const past = [
   {
     id: 1,
     name: "Florianópolis",
-    photo: image1,
+    photo: "https://facebook.github.io/react-native/docs/assets/favicon.png",
     skill1: "Singer",
     skill2: "Lyricist"
   },
   {
     id: 2,
     name: "Karangkeng",
-    photo: image2,
+    photo: "https://facebook.github.io/react-native/docs/assets/favicon.png",
     skill1: "Singer",
     skill2: "Lyricist"
   },
   {
     id: 3,
     name: "Lijia",
-    photo: image3,
+    photo: "https://facebook.github.io/react-native/docs/assets/favicon.png",
     skill1: "Singer",
     skill2: "Lyricist"
   }
@@ -44,7 +44,7 @@ const past = [
 const current = {
   id: 1,
   name: "TeeJay",
-  photo: image1,
+  photo: "https://facebook.github.io/react-native/docs/assets/favicon.png",
   skill1: "Singer",
   skill2: "Lyricist"
 };

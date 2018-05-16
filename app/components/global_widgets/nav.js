@@ -8,9 +8,9 @@ export default class Nav extends Component {
   }
 
   menu() {
-    if (this.props.state.navProps.type == "menu") {
+    if (this.props.state.navProps.type === "menu") {
       this.props.onPress();
-    } else if (this.props.state.navProps.type == "pop") {
+    } else if (this.props.state.navProps.type === "pop") {
       this.props.state.navigator.replace({ id: "inbox" });
     }
   }

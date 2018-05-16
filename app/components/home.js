@@ -12,61 +12,50 @@ import {
   View,
   TouchableHighlight
 } from "react-native";
-import * as firebase from "firebase";
+import firebaseApp from "./firebaseApp";
 import Nav from "./global_widgets/nav";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import logoWhite from "./../img/logoWhite.png";
-import image1 from "./../img/image1.jpg";
-import image2 from "./../img/image2.jpg";
-import image3 from "./../img/image3.jpg";
-import image4 from "./../img/image4.jpg";
-import image5 from "./../img/image5.jpg";
-import image6 from "./../img/image6.jpg";
-
-const config = {
-  apiKey: "AIzaSyBKQMJwcNRlodeEYP_lCMUQY91Q-ER7Vp0",
-  authDomain: "t13-database.firebaseapp.com",
-  databaseURL: "https://t13-database.firebaseio.com",
-  projectId: "t13-database",
-  storageBucket: "t13-database.appspot.com",
-  messagingSenderId: "634747026122"
-};
-
-const firebaseApp = firebase.initializeApp(config);
+// import logoWhite from "./../img/logoWhite.png";
+// import image1 from "./../img/image1.jpg";
+// import image2 from "./../img/image2.jpg";
+// import image3 from "./../img/image3.jpg";
+// import image4 from "./../img/image4.jpg";
+// import image5 from "./../img/image5.jpg";
+// import image6 from "./../img/image6.jpg";
 
 const profiles = [
   {
     id: 1,
     name: "TeeJay",
-    photo: image1,
+    photo: "https://facebook.github.io/react-native/docs/assets/favicon.png",
     skill1: "Singer",
     skill2: "Lyricist"
   },
   {
     id: 2,
     name: "MC Sai",
-    photo: image2,
+    photo: "https://facebook.github.io/react-native/docs/assets/favicon.png",
     skill1: "Rapper",
     skill2: "Lyricist"
   },
   {
     id: 3,
     name: "SriMathumitha",
-    photo: image3,
+    photo: "https://facebook.github.io/react-native/docs/assets/favicon.png",
     skill1: "Singer",
     skill2: "Lyricist"
   },
   {
     id: 4,
     name: "Gaji",
-    photo: image4,
+    photo: "https://facebook.github.io/react-native/docs/assets/favicon.png",
     skill1: "Music producer",
     skill2: "Mix and mastering engineer"
   },
   {
     id: 1,
     name: "Pragathi Guruprasad",
-    photo: image3,
+    photo: "https://facebook.github.io/react-native/docs/assets/favicon.png",
     skill1: "Singer",
     skill2: "Songwriter"
   },
@@ -155,7 +144,7 @@ export default class Index extends Component {
   recentSearches(val) {
     return (
       <ImageBackground
-        source={val.photo}
+        source={{ uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png' }}
         resizeMode="stretch"
         style={{
           width: 330,
@@ -193,7 +182,7 @@ export default class Index extends Component {
   recentlyViewed(val) {
     return (
       <ImageBackground
-        source={val.photo}
+        source={{ uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png' }}
         resizeMode="stretch"
         style={{
           width: 330,
@@ -231,7 +220,7 @@ export default class Index extends Component {
   yourFavorites(val) {
     return (
       <ImageBackground
-        source={val.photo}
+        source={{ uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png' }}
         resizeMode="stretch"
         style={{
           width: 330,
@@ -267,14 +256,6 @@ export default class Index extends Component {
   }
 
   getItems(itemsRef) {
-    // let items = [
-    //   {
-    //     title: "Item one"
-    //   },
-    //   {
-    //     title: "Item two"
-    //   }
-    // ];
     itemsRef.on("value", snap => {
       let items = [];
       snap.forEach(child => {
@@ -318,7 +299,8 @@ export default class Index extends Component {
         <ScrollView style={{ flex: 1 }}>
           <View style={styles.container}>
             <Image
-              source={logoWhite}
+              style={{ width: 50, height: 50 }}
+              source={{ uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png' }}
               resizeMode="contain"
               style={{ width: 40, height: 40, marginLeft: 20, marginTop: 15 }}
             />
