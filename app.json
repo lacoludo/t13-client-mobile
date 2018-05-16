@@ -1,5 +1,23 @@
 {
   "expo": {
-    "sdkVersion": "27.0.0"
+    "name": "t13-mobile",
+    "sdkVersion": "27.0.0",
+    "description": "The first search engine for independent music",
+    "orientation": "portrait",
+    "privacy": "public",
+    "icon": "./app.png",
+    "primaryColor": "#db1d40",
+    "splash": {
+      "image": "./splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#232323"
+    },
+    "packagerOpts": {
+      "assetExts": ["otf"]
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#232323",
+      "barStyle": "dark-content"
+    }
   }
 }
