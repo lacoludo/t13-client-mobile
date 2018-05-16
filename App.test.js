@@ -1,9 +1,9 @@
-import React from 'react';
-import App from './App';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import renderer from 'react-test-renderer';
+import { AppNavigator } from "./App";
 
-it('renders without crashing', () => {
-  const rendered = renderer.create(<App />).toJSON();
+it("renders without crashing", () => {
+  const rendered = renderer.create(<AppNavigator />).toJSON();
   expect(rendered).toBeTruthy();
 });

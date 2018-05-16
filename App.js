@@ -1,10 +1,12 @@
-import React from 'react';
-import Root from './app/container/index';
+import React from "react";
+import { View, Text } from "react-native";
 
 export default class App extends React.Component {
   render() {
     return (
-     <Root />
+      <View>
+        <Text>Thriller</Text>
+      </View>
     );
   }
 }
