@@ -1,158 +1,29 @@
-import React, { Component } from "react";
-import { View } from "react-native";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import Icon from "react-native-vector-icons/MaterialIcons";
-import Drawer from "react-native-drawer";
-import { Navigator } from "react-native-deprecated-custom-components";
-import * as actions from "./../actions/actions";
-import Nav from "./global_widgets/nav";
-import ControlPanel from "./controlPanel";
-import Search from "./search";
-import Home from "./home";
-import Inbox from "./inbox";
-import Convo from "./each_convo";
-import Favorites from "./favorites";
-import Profile from "./profile";
-import Settings from "./settings";
+export { Theme } from "./Theme";
+export { AnimatedView } from "./Animations";
+export { TextField } from "./Fields";
 
-const drawerRef = {
-  close: () => console.log("close"),
-  open: () => console.log("open")
+export { default as Images } from "./images";
+export { default as Text } from "./Text";
+export { default as Button } from "./Button";
+export { default as Container } from "./Container";
+export { default as Switch } from "./Switch";
+export { default as LoadingIndicator } from "./LoadingIndicator";
+export { default as Avatar } from "./Avatar";
+export { default as SmartImage } from "./SmartImage";
+export { default as CacheManager } from "./CacheManager";
+export { default as RefreshIndicator } from "./RefreshIndicator";
+export { default as NavHeader } from "./NavHeader";
+export { default as Firebase } from "./Firebase";
+export { default as ImageUpload } from "./ImageUpload";
+export { default as Feed } from "./Feed";
+export { default as FeedStore } from "./FeedStore";
+export { default as SpinningIndicator } from "./SpinningIndicator";
+
+export const serializeException = (e: string | {}): string => {
+  if (typeof e === "string") {
+    return e;
+  } else if (e.message) {
+    return e.message;
+  }
+  return JSON.stringify(e);
 };
-
-connect(state => ({
-  state: state.seven
-}));
-
-class Root extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-    drawerRef = this.refs.drawer;
-  }
-  closeControlPanel() {
-    drawerRef.close();
-  }
-  openControlPanel() {
-    drawerRef.open();
-  }
-
-  renderScene(route, navigator) {
-    const { state, actions } = this.props;
-    const routeId = route.id;
-    if (routeId === "search") {
-      return (
-        <Search
-          {...this.props}
-          close={() => this.closeControlPanel()}
-          navigator={navigator}
-        />
-      );
-    }
-    if (routeId === "home") {
-      return (
-        <Home
-          {...this.props}
-          userData={route.userData}
-          close={() => this.closeControlPanel()}
-          navigator={navigator}
-        />
-      );
-    }
-    if (routeId === "inbox") {
-      return (
-        <Inbox
-          {...this.props}
-          data={route.data}
-          close={() => this.closeControlPanel()}
-          navigator={navigator}
-        />
-      );
-    }
-    if (routeId === "convo") {
-      return (
-        <Convo
-          {...this.props}
-          data={route.data}
-          close={() => this.closeControlPanel()}
-          navigator={navigator}
-        />
-      );
-    }
-    if (routeId === "favorites") {
-      return (
-        <Favorites
-          {...this.props}
-          close={() => this.closeControlPanel()}
-          navigator={navigator}
-        />
-      );
-    }
-    if (routeId === "profile") {
-      return (
-        <Profile
-          {...this.props}
-          data={route.data}
-          close={() => this.closeControlPanel()}
-          navigator={navigator}
-        />
-      );
-    }
-    if (routeId === "settings") {
-      return (
-        <Settings
-          {...this.props}
-          close={() => this.closeControlPanel()}
-          navigator={navigator}
-        />
-      );
-    }
-  }
-
-  render() {
-    const { state, actions } = this.props;
-    console.log(this.props);
-    return (
-      <View style={{ flex: 1 }}>
-        <Drawer
-          ref="drawer"
-          tapToClose={true}
-          type="overlay"
-          tapToClose={true}
-          openDrawerOffset={0.2}
-          panCloseMask={0.2}
-          content={
-            <ControlPanel
-              {...this.props}
-              onPress={() => this.closeControlPanel()}
-            />
-          }
-        >
-          <Nav
-            {...this.props}
-            pop={() => this.refs.NAV}
-            onPress={() => this.openControlPanel()}
-          />
-          <Navigator
-            style={{ flex: 1 }}
-            ref={"NAV"}
-            initialRoute={{ id: "home", name: "home" }}
-            renderScene={this.renderScene.bind(this)}
-          />
-        </Drawer>
-      </View>
-    );
-  }
-}
-
-export default connect(
-  state => ({
-    state: state.t13
-  }),
-  dispatch => ({
-    actions: bindActionCreators(actions, dispatch)
-  })
-)(Root);
