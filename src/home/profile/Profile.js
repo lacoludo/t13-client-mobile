@@ -13,23 +13,18 @@ import { Constants, LinearGradient } from "expo";
 
 import ProfileStore from "../ProfileStore";
 
-import { Text, Avatar, Theme, Images, Feed, FeedStore } from "../../components";
-import type { FeedEntry } from "../../components/Model";
+import { Text, Avatar, Theme, Images } from "../../components";
 import type { ScreenProps } from "../../components/Types";
 
 type InjectedProps = {
-  profileStore: ProfileStore,
-  userFeedStore: FeedStore
+  profileStore: ProfileStore
 };
 
-@inject("profileStore", "userFeedStore")
+@inject("profileStore")
 @observer
 export default class ProfileComp extends React.Component<
   ScreenProps<> & InjectedProps
 > {
-  componentDidMount() {
-    this.props.userFeedStore.checkForNewEntriesInFeed();
-  }
 
   @autobind
   settings() {
@@ -37,18 +32,8 @@ export default class ProfileComp extends React.Component<
     this.props.navigation.navigate("Settings", { profile });
   }
 
-  @autobind
-  loadMore() {
-    this.props.userFeedStore.loadFeed();
-  }
-
-  @autobind
-  keyExtractor(item: FeedEntry): string {
-    return item.post.id;
-  }
-
   render(): React.Node {
-    const { navigation, userFeedStore, profileStore } = this.props;
+    const { navigation, profileStore } = this.props;
     const { profile } = profileStore;
     return (
       <View style={styles.container}>
@@ -56,34 +41,27 @@ export default class ProfileComp extends React.Component<
           colors={["#5cc0f1", "#d6ebf4", "white"]}
           style={styles.gradient}
         />
-        <Feed
-          bounce={false}
-          ListHeaderComponent={
-            <View style={styles.header}>
-              <Image style={styles.cover} source={Images.cover} />
-              <TouchableOpacity onPress={this.settings} style={styles.settings}>
-                <View>
-                  <Icon name="settings" size={25} color="white" />
-                </View>
-              </TouchableOpacity>
-              <View style={styles.title}>
-                <Text type="large" style={styles.outline}>
-                  {profile.outline}
-                </Text>
-                <Text type="header2" style={styles.name}>
-                  {profile.name}
-                </Text>
-              </View>
-              <Avatar
-                size={avatarSize}
-                style={styles.avatar}
-                {...profile.picture}
-              />
+        <View style={styles.header}>
+          <Image style={styles.cover} source={Images.cover} />
+          <TouchableOpacity onPress={this.settings} style={styles.settings}>
+            <View>
+              <Icon name="settings" size={25} color="white" />
             </View>
-          }
-          store={userFeedStore}
-          {...{ navigation }}
-        />
+          </TouchableOpacity>
+          <View style={styles.title}>
+            <Text type="large" style={styles.outline}>
+              {profile.outline}
+            </Text>
+            <Text type="header2" style={styles.name}>
+              {profile.name}
+            </Text>
+          </View>
+          <Avatar
+            size={avatarSize}
+            style={styles.avatar}
+            {...profile.picture}
+          />
+        </View>
       </View>
     );
   }
