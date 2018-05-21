@@ -6,7 +6,7 @@ import { inject, observer } from "mobx-react/native";
 
 import ProfileStore from "../ProfileStore";
 
-import { Text, Theme, Avatar, Feed, FeedStore } from "../../components";
+import { Text, Theme, Avatar } from "../../components";
 import type { ScreenProps } from "../../components/Types";
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
@@ -17,11 +17,10 @@ type ExploreState = {
 };
 
 type InjectedProps = {
-  feedStore: FeedStore,
   profileStore: ProfileStore
 };
 
-@inject("feedStore", "profileStore") @observer
+@inject("profileStore") @observer
 export default class Explore extends React.Component<ScreenProps<> & InjectedProps, ExploreState> {
 
   state = {
@@ -33,12 +32,8 @@ export default class Explore extends React.Component<ScreenProps<> & InjectedPro
     this.props.navigation.navigate("Profile");
   }
 
-  componentDidMount() {
-    this.props.feedStore.checkForNewEntriesInFeed();
-  }
-
   render(): React.Node {
-    const { feedStore, profileStore, navigation } = this.props;
+    const { profileStore, navigation } = this.props;
     const { scrollAnimation } = this.state;
     const { profile } = profileStore;
     const opacity = scrollAnimation.interpolate({
@@ -89,17 +84,9 @@ export default class Explore extends React.Component<ScreenProps<> & InjectedPro
             }
           </Animated.View>
         </AnimatedSafeAreaView>
-        <Feed
-          store={feedStore}
-          onScroll={Animated.event([{
-            nativeEvent: {
-              contentOffset: {
-                y: scrollAnimation
-              }
-            }
-          }])}
-          {...{ navigation }}
-        />
+        <Text>
+          I don't know
+        </Text>
       </View>
     );
   }
